@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function ShortcutScreen(props) {
   const { shortcut } = props.route.params;
@@ -10,8 +10,8 @@ export default function ShortcutScreen(props) {
     </Text>
   ));
 
-  {
-    return (
+  return (
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.container}>
         <Text style={styles.title}>{shortcut.title}</Text>
         <Text style={styles.btnSoftware}>{shortcut.software.name}</Text>
@@ -28,6 +28,16 @@ export default function ShortcutScreen(props) {
           <Text style={styles.subTitle}>Linux:</Text>
           <Text style={styles.subTitleShortcut}>{shortcut.linux}</Text>
         </View>
+        <Image
+          style={styles.shortcutImg}
+          source={
+            shortcut.image
+              ? {
+                  uri: process.env.API_URL + shortcut.image.contentUrl,
+                }
+              : require("../../assets/default.jpeg")
+          }
+        />
         <View style={styles.containerContext}>
           <Text style={styles.titleContext}>Context:</Text>
           <Text style={styles.context}>{shortcut.context}</Text>
@@ -37,8 +47,8 @@ export default function ShortcutScreen(props) {
           <Text style={styles.context}>{shortcut.description}</Text>
         </View>
       </View>
-    );
-  }
+    </ScrollView>
+  );
 }
 const styles = StyleSheet.create({
   container: {
@@ -122,5 +132,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 20,
     paddingLeft: 15,
+  },
+  shortcutImg: {
+    width: "90%",
+    height: undefined,
+    resizeMode: "contain",
+    aspectRatio: 3 / 1.5,
   },
 });

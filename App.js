@@ -4,8 +4,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./src/screens/HomeScreen";
 import CategoryScreen from "./src/screens/CategoryScreen";
 import SoftwareScreen from "./src/screens/SoftwareScreen";
-import AddShortcutScreen from "./src/screens/AddShortcutScreen";
 import ShortcutScreen from "./src/screens/ShortcutScreen";
+import AddShortcutScreen from "./src/screens/AddShortcutScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,7 +37,7 @@ function App() {
           // options={({ route }) => ({ title: route.params.category.name })}
         />
         <Stack.Screen
-          name="Addshortcut"
+          name="AddShortcutScreen"
           component={AddShortcutScreen}
           options={{ title: "Ajouter un Shortcut:" }}
           // options={({ route }) => ({ title: route.params.category.name })}

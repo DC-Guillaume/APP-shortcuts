@@ -43,24 +43,22 @@ export default function SoftwareScreen(props) {
   ));
 
   return (
-    <View style={styles.container}>
-      <ScrollView>
-        <Picker
-          selectedValue={selectedSoftware}
-          style={{ height: 50, width: 150 }}
-          onValueChange={function (c) {
-            fetch(process.env.API_URL + "shortcuts?software.id=" + c)
-              .then((response) => response.json())
-              .then((data) => setShortcuts(data["hydra:member"]))
-              .catch((error) => console.log(error));
-            setSelectedSoftware(c);
-          }}
-        >
-          {softwareJsx}
-        </Picker>
-        {shortcutsJsx}
-      </ScrollView>
-    </View>
+    <ScrollView style={styles.container}>
+      <Picker
+        selectedValue={selectedSoftware}
+        style={{ height: 50, width: 150 }}
+        onValueChange={function (c) {
+          fetch(process.env.API_URL + "shortcuts?software.id=" + c)
+            .then((response) => response.json())
+            .then((data) => setShortcuts(data["hydra:member"]))
+            .catch((error) => console.log(error));
+          setSelectedSoftware(c);
+        }}
+      >
+        {softwareJsx}
+      </Picker>
+      {shortcutsJsx}
+    </ScrollView>
   );
 }
 

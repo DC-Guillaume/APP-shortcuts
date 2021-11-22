@@ -34,7 +34,7 @@ export default class HomeScreen extends Component {
         <TouchableOpacity>
           <Text
             style={styles.button}
-            onPress={() => this.props.navigation.navigate("AddShortcut")}
+            onPress={() => this.props.navigation.navigate("AddShortcutScreen")}
           >
             Add Shortcut
           </Text>
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     padding: 30,
     borderRadius: 20,
     color: "white",
+    fontWeight: "bold",
   },
 
   title: {

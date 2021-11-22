@@ -43,24 +43,22 @@ export default function CategoryScreen(props) {
   ));
 
   return (
-    <View style={styles.container}>
-      <ScrollView>
-        <Picker
-          selectedValue={selectedCategory}
-          style={{ height: 50, width: 150 }}
-          onValueChange={function (c) {
-            fetch(process.env.API_URL + "shortcuts?categories.id=" + c)
-              .then((response) => response.json())
-              .then((data) => setShortcuts(data["hydra:member"]))
-              .catch((error) => console.log(error));
-            setSelectedCategory(c);
-          }}
-        >
-          {categorieJsx}
-        </Picker>
-        {shortcutsJsx}
-      </ScrollView>
-    </View>
+    <ScrollView style={styles.container}>
+      <Picker
+        selectedValue={selectedCategory}
+        style={{ height: 50, width: 150 }}
+        onValueChange={function (c) {
+          fetch(process.env.API_URL + "shortcuts?categories.id=" + c)
+            .then((response) => response.json())
+            .then((data) => setShortcuts(data["hydra:member"]))
+            .catch((error) => console.log(error));
+          setSelectedCategory(c);
+        }}
+      >
+        {categorieJsx}
+      </Picker>
+      {shortcutsJsx}
+    </ScrollView>
   );
 }
 
@@ -70,7 +68,7 @@ const styles = StyleSheet.create({
     padding: 5,
     borderWidth: 2,
     borderColor: "#4e4e89",
-    backgroundColor: "red",
+    backgroundColor: "#fff",
     marginBottom: 10,
   },
 
